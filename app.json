@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Pílula em Dia",
+    "slug": "pilula-em-dia",
+    "version": "2.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "android": {
+      "package": "com.pilulaemdia.app",
+      "permissions": [
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.SCHEDULE_EXACT_ALARM"
+      ]
+    },
+    "ios": {
+      "bundleIdentifier": "com.pilulaemdia.app",
+      "supportsTablet": true
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-sqlite",
+      [
+        "expo-notifications",
+        {
+          "defaultChannel": "pill-reminders"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "656bac7a-8ba5-4900-92e7-0d81b215da7d"
+      }
+    }
+  }
+}

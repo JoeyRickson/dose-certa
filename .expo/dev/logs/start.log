@@ -1,0 +1,398 @@
+{"_e":"root:init","_t":1790013778156,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1790013778157,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1790013778160,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1790013788002,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1790013799754,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1790013803817,"plugins":[{"packageName":"expo-sqlite","bannerTitle":"expo-sqlite","cliBanner":false,"webpageEndpoint":"/_expo/plugins/expo-sqlite"}]}
+{"_e":"metro:instantiate","_t":1790013814048,"atlas":false,"workers":9,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1790013814891,"id":"1","platform":"web","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1790013814891,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790013814900,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790013820721,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1790013820821,"id":"1","progress":0.010000000000000002,"total":3,"current":1}
+{"_e":"metro:bundling:progress","_t":1790013821060,"id":"1","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1790013821172,"id":"1","progress":0.04000000000000001,"total":26,"current":3}
+{"_e":"metro:bundling:progress","_t":1790013821278,"id":"1","progress":0.04000000000000001,"total":26,"current":4}
+{"_e":"metro:bundling:progress","_t":1790013821388,"id":"1","progress":0.04000000000000001,"total":37,"current":5}
+{"_e":"metro:bundling:progress","_t":1790013821544,"id":"1","progress":0.04000000000000001,"total":37,"current":7}
+{"_e":"metro:bundling:progress","_t":1790013821650,"id":"1","progress":0.059167275383491605,"total":37,"current":9}
+{"_e":"metro:bundling:progress","_t":1790013821750,"id":"1","progress":0.07335069444444443,"total":48,"current":13}
+{"_e":"metro:bundling:progress","_t":1790013821851,"id":"1","progress":0.10749798441279225,"total":61,"current":20}
+{"_e":"metro:bundling:progress","_t":1790013821957,"id":"1","progress":0.129150390625,"total":64,"current":23}
+{"_e":"metro:bundling:progress","_t":1790013822064,"id":"1","progress":0.1650390625,"total":64,"current":26}
+{"_e":"metro:bundling:progress","_t":1790013822166,"id":"1","progress":0.18853878116343492,"total":76,"current":33}
+{"_e":"metro:bundling:progress","_t":1790013822269,"id":"1","progress":0.18853878116343492,"total":137,"current":53}
+{"_e":"metro:bundling:progress","_t":1790013822373,"id":"1","progress":0.2081640625,"total":160,"current":73}
+{"_e":"metro:bundling:progress","_t":1790013822473,"id":"1","progress":0.3283676303497033,"total":178,"current":102}
+{"_e":"metro:bundling:progress","_t":1790013822576,"id":"1","progress":0.41189574515482286,"total":201,"current":129}
+{"_e":"metro:bundling:progress","_t":1790013822679,"id":"1","progress":0.4444444444444444,"total":237,"current":158}
+{"_e":"metro:bundling:progress","_t":1790013822779,"id":"1","progress":0.4444444444444444,"total":273,"current":181}
+{"_e":"metro:bundling:progress","_t":1790013822880,"id":"1","progress":0.4666236857766316,"total":284,"current":194}
+{"_e":"metro:bundling:progress","_t":1790013822982,"id":"1","progress":0.4785607055732783,"total":292,"current":202}
+{"_e":"metro:bundling:progress","_t":1790013823084,"id":"1","progress":0.4963842975206612,"total":308,"current":217}
+{"_e":"metro:bundling:progress","_t":1790013823184,"id":"1","progress":0.5436728889601026,"total":316,"current":233}
+{"_e":"metro:bundling:progress","_t":1790013823284,"id":"1","progress":0.6477107738368999,"total":333,"current":268}
+{"_e":"metro:bundling:progress","_t":1790013823384,"id":"1","progress":0.7096493460644822,"total":349,"current":294}
+{"_e":"metro:bundling:progress","_t":1790013823484,"id":"1","progress":0.7366971319112919,"total":367,"current":315}
+{"_e":"metro:bundling:progress","_t":1790013823587,"id":"1","progress":0.79686000931992,"total":382,"current":341}
+{"_e":"metro:bundling:progress","_t":1790013823687,"id":"1","progress":0.8465782176128137,"total":413,"current":380}
+{"_e":"metro:bundling:progress","_t":1790013823793,"id":"1","progress":0.8514059749134806,"total":427,"current":394}
+{"_e":"metro:bundling:progress","_t":1790013823897,"id":"1","progress":0.8631275165805479,"total":451,"current":419}
+{"_e":"metro:bundling:progress","_t":1790013823998,"id":"1","progress":0.8730183050912381,"total":457,"current":427}
+{"_e":"metro:bundling:progress","_t":1790013824102,"id":"1","progress":0.9617463942971873,"total":466,"current":457}
+{"_e":"metro:bundling:progress","_t":1790013824205,"id":"1","progress":0.9915254619299408,"total":471,"current":469}
+{"_e":"metro:bundling:progress","_t":1790013824305,"id":"1","progress":0.9957582232319544,"total":471,"current":470}
+{"_e":"metro:bundling:progress","_t":1790013825180,"id":"1","progress":0.999,"total":471,"current":471}
+{"_e":"metro:bundling:progress","_t":1790013825288,"id":"1","progress":0.999,"total":473,"current":473}
+{"_e":"metro:bundling:done","_t":1790013825679,"id":"1","total":473,"ms":10788.0944}
+{"_e":"metro:bundling:started","_t":1790013825807,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-sqlite\\web\\worker.ts"}
+{"_e":"metro:bundling:progress","_t":1790013825808,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790013825810,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790013825821,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:bundling:progress","_t":1790013825823,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790013825823,"level":"warn","data":["[expo-notifications] Listening to push token changes is not yet fully supported on web. Adding a listener will have no effect."]}
+{"_e":"metro:bundling:progress","_t":1790013825823,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790013825824,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:progress","_t":1790013825824,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790013825824,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:bundling:progress","_t":1790013825824,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790013825909,"id":"2","progress":0.010000000000000002,"total":10,"current":1}
+{"_e":"metro:bundling:progress","_t":1790013826024,"id":"2","progress":0.5102040816326531,"total":14,"current":10}
+{"_e":"metro:bundling:progress","_t":1790013826154,"id":"2","progress":0.87890625,"total":16,"current":15}
+{"_e":"metro:bundling:progress","_t":1790013826353,"id":"2","progress":0.999,"total":16,"current":16}
+{"_e":"metro:bundling:done","_t":1790013826364,"id":"2","total":16,"ms":556.2784}
+{"_e":"metro:client_log","_t":1790013865660,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"root:init","_t":1790014541721,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1790014541722,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1790014541724,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1790014542071,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1790014542418,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1790014542599,"plugins":[{"packageName":"expo-sqlite","bannerTitle":"expo-sqlite","cliBanner":false,"webpageEndpoint":"/_expo/plugins/expo-sqlite"}]}
+{"_e":"metro:instantiate","_t":1790014547207,"atlas":false,"workers":9,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1790014547567,"id":"1","platform":"web","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1790014547567,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790014547572,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790014548525,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1790014548625,"id":"1","progress":0.010000000000000002,"total":3,"current":1}
+{"_e":"metro:bundling:progress","_t":1790014548710,"id":"1","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1790014548826,"id":"1","progress":0.1322314049586777,"total":11,"current":4}
+{"_e":"metro:bundling:progress","_t":1790014549060,"id":"1","progress":0.20661157024793386,"total":11,"current":5}
+{"_e":"metro:bundling:progress","_t":1790014549694,"id":"1","progress":0.29752066115702475,"total":11,"current":6}
+{"_e":"metro:bundling:progress","_t":1790014549795,"id":"1","progress":0.36,"total":20,"current":12}
+{"_e":"metro:bundling:progress","_t":1790014549923,"id":"1","progress":0.36,"total":43,"current":17}
+{"_e":"metro:bundling:progress","_t":1790014550022,"id":"1","progress":0.36,"total":55,"current":22}
+{"_e":"metro:bundling:progress","_t":1790014550122,"id":"1","progress":0.36,"total":73,"current":27}
+{"_e":"metro:bundling:progress","_t":1790014550223,"id":"1","progress":0.36,"total":77,"current":31}
+{"_e":"metro:bundling:progress","_t":1790014550325,"id":"1","progress":0.36,"total":78,"current":33}
+{"_e":"metro:bundling:progress","_t":1790014550423,"id":"1","progress":0.36,"total":80,"current":37}
+{"_e":"metro:bundling:progress","_t":1790014550523,"id":"1","progress":0.36,"total":89,"current":44}
+{"_e":"metro:bundling:progress","_t":1790014550636,"id":"1","progress":0.36,"total":93,"current":50}
+{"_e":"metro:bundling:progress","_t":1790014550738,"id":"1","progress":0.36,"total":119,"current":65}
+{"_e":"metro:bundling:progress","_t":1790014550840,"id":"1","progress":0.36,"total":133,"current":75}
+{"_e":"metro:bundling:progress","_t":1790014550952,"id":"1","progress":0.36,"total":174,"current":79}
+{"_e":"metro:bundling:progress","_t":1790014551058,"id":"1","progress":0.36,"total":187,"current":91}
+{"_e":"metro:bundling:progress","_t":1790014551158,"id":"1","progress":0.36,"total":190,"current":104}
+{"_e":"metro:bundling:progress","_t":1790014551258,"id":"1","progress":0.36,"total":202,"current":120}
+{"_e":"metro:bundling:progress","_t":1790014551360,"id":"1","progress":0.37124932395889665,"total":215,"current":131}
+{"_e":"metro:bundling:progress","_t":1790014551462,"id":"1","progress":0.4109138724523341,"total":234,"current":150}
+{"_e":"metro:bundling:progress","_t":1790014551562,"id":"1","progress":0.4876886824670446,"total":242,"current":169}
+{"_e":"metro:bundling:progress","_t":1790014551665,"id":"1","progress":0.55084228515625,"total":256,"current":190}
+{"_e":"metro:bundling:progress","_t":1790014551767,"id":"1","progress":0.5804988662131518,"total":273,"current":208}
+{"_e":"metro:bundling:progress","_t":1790014551867,"id":"1","progress":0.5995490933641976,"total":288,"current":223}
+{"_e":"metro:bundling:progress","_t":1790014551969,"id":"1","progress":0.5995490933641976,"total":329,"current":242}
+{"_e":"metro:bundling:progress","_t":1790014552071,"id":"1","progress":0.6069497025419146,"total":344,"current":268}
+{"_e":"metro:bundling:progress","_t":1790014552175,"id":"1","progress":0.6179706790123457,"total":360,"current":283}
+{"_e":"metro:bundling:progress","_t":1790014552279,"id":"1","progress":0.6505059804438373,"total":367,"current":296}
+{"_e":"metro:bundling:progress","_t":1790014552387,"id":"1","progress":0.7224999999999999,"total":380,"current":323}
+{"_e":"metro:bundling:progress","_t":1790014552487,"id":"1","progress":0.7639389113209667,"total":389,"current":340}
+{"_e":"metro:bundling:progress","_t":1790014552587,"id":"1","progress":0.7639389113209667,"total":415,"current":352}
+{"_e":"metro:bundling:progress","_t":1790014552687,"id":"1","progress":0.7639389113209667,"total":429,"current":370}
+{"_e":"metro:bundling:progress","_t":1790014552787,"id":"1","progress":0.823776328211255,"total":433,"current":393}
+{"_e":"metro:bundling:progress","_t":1790014552892,"id":"1","progress":0.8812994585589339,"total":441,"current":414}
+{"_e":"metro:bundling:progress","_t":1790014552988,"id":"1","progress":0.9474928835158136,"total":451,"current":439}
+{"_e":"metro:bundling:progress","_t":1790014553090,"id":"1","progress":0.9826467503002169,"total":459,"current":455}
+{"_e":"metro:bundling:progress","_t":1790014553203,"id":"1","progress":0.9915254619299408,"total":471,"current":469}
+{"_e":"metro:bundling:progress","_t":1790014553303,"id":"1","progress":0.9957582232319544,"total":471,"current":470}
+{"_e":"metro:bundling:progress","_t":1790014554416,"id":"1","progress":0.999,"total":471,"current":471}
+{"_e":"metro:bundling:progress","_t":1790014554520,"id":"1","progress":0.999,"total":473,"current":473}
+{"_e":"metro:bundling:done","_t":1790014554602,"id":"1","total":473,"ms":7035.5396}
+{"_e":"metro:bundling:started","_t":1790014554727,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-sqlite\\web\\worker.ts"}
+{"_e":"metro:bundling:progress","_t":1790014554727,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790014554728,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790014554743,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:bundling:progress","_t":1790014554744,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790014554744,"level":"warn","data":["[expo-notifications] Listening to push token changes is not yet fully supported on web. Adding a listener will have no effect."]}
+{"_e":"metro:bundling:progress","_t":1790014554744,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790014554744,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:progress","_t":1790014554744,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790014554745,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:bundling:progress","_t":1790014554745,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790014554828,"id":"2","progress":0.25,"total":12,"current":6}
+{"_e":"metro:bundling:progress","_t":1790014554932,"id":"2","progress":0.765625,"total":16,"current":14}
+{"_e":"metro:bundling:progress","_t":1790014555037,"id":"2","progress":0.87890625,"total":16,"current":15}
+{"_e":"metro:bundling:progress","_t":1790014555212,"id":"2","progress":0.999,"total":16,"current":16}
+{"_e":"metro:bundling:done","_t":1790014555225,"id":"2","total":16,"ms":498.1028}
+{"_e":"metro:client_log","_t":1790014555337,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:bundling:started","_t":1790015112341,"id":"5","platform":"web","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1790015112341,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1790015112371,"id":"5","total":1,"ms":30.0704}
+{"_e":"metro:bundling:started","_t":1790015112490,"id":"6","platform":"web","environment":null,"entry":"node_modules\\expo-sqlite\\web\\worker.ts"}
+{"_e":"metro:bundling:progress","_t":1790015112490,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1790015112496,"id":"6","total":1,"ms":6.6263}
+{"_e":"metro:client_log","_t":1790015112497,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1790015112498,"level":"warn","data":["[expo-notifications] Listening to push token changes is not yet fully supported on web. Adding a listener will have no effect."]}
+{"_e":"metro:client_log","_t":1790015112498,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1790015112498,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1790015112608,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"root:init","_t":1790015137039,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1790015137040,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1790015137042,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1790015137355,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1790015137625,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1790015137779,"plugins":[{"packageName":"expo-sqlite","bannerTitle":"expo-sqlite","cliBanner":false,"webpageEndpoint":"/_expo/plugins/expo-sqlite"}]}
+{"_e":"metro:instantiate","_t":1790015142255,"atlas":false,"workers":9,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1790015142600,"id":"1","platform":"web","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1790015142600,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790015142607,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790015143416,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1790015143517,"id":"1","progress":0.010000000000000002,"total":3,"current":1}
+{"_e":"metro:bundling:progress","_t":1790015143688,"id":"1","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1790015143789,"id":"1","progress":0.04000000000000001,"total":24,"current":3}
+{"_e":"metro:bundling:progress","_t":1790015143937,"id":"1","progress":0.04000000000000001,"total":26,"current":4}
+{"_e":"metro:bundling:progress","_t":1790015143950,"id":"1","progress":0.04000000000000001,"total":26,"current":5}
+{"_e":"metro:bundling:progress","_t":1790015144051,"id":"1","progress":0.04000000000000001,"total":34,"current":6}
+{"_e":"metro:bundling:progress","_t":1790015144162,"id":"1","progress":0.04000000000000001,"total":44,"current":8}
+{"_e":"metro:bundling:progress","_t":1790015144265,"id":"1","progress":0.04725897920604915,"total":46,"current":10}
+{"_e":"metro:bundling:progress","_t":1790015144366,"id":"1","progress":0.057183364839319475,"total":46,"current":11}
+{"_e":"metro:bundling:progress","_t":1790015144466,"id":"1","progress":0.10288358846564613,"total":53,"current":17}
+{"_e":"metro:bundling:progress","_t":1790015144573,"id":"1","progress":0.16259105098855356,"total":62,"current":25}
+{"_e":"metro:bundling:progress","_t":1790015144676,"id":"1","progress":0.2636961285609934,"total":74,"current":38}
+{"_e":"metro:bundling:progress","_t":1790015144782,"id":"1","progress":0.2636961285609934,"total":143,"current":56}
+{"_e":"metro:bundling:progress","_t":1790015144882,"id":"1","progress":0.2636961285609934,"total":160,"current":75}
+{"_e":"metro:bundling:progress","_t":1790015144983,"id":"1","progress":0.2636961285609934,"total":186,"current":93}
+{"_e":"metro:bundling:progress","_t":1790015145083,"id":"1","progress":0.390625,"total":208,"current":130}
+{"_e":"metro:bundling:progress","_t":1790015145183,"id":"1","progress":0.47482522420733,"total":238,"current":164}
+{"_e":"metro:bundling:progress","_t":1790015145289,"id":"1","progress":0.47482522420733,"total":287,"current":197}
+{"_e":"metro:bundling:progress","_t":1790015145390,"id":"1","progress":0.5528019058863215,"total":308,"current":229}
+{"_e":"metro:bundling:progress","_t":1790015145490,"id":"1","progress":0.5861106463911807,"total":337,"current":258}
+{"_e":"metro:bundling:progress","_t":1790015145590,"id":"1","progress":0.6873402001607131,"total":351,"current":291}
+{"_e":"metro:bundling:progress","_t":1790015145692,"id":"1","progress":0.7301657288429776,"total":378,"current":323}
+{"_e":"metro:bundling:progress","_t":1790015145792,"id":"1","progress":0.7861479991624843,"total":397,"current":352}
+{"_e":"metro:bundling:progress","_t":1790015145892,"id":"1","progress":0.81,"total":420,"current":378}
+{"_e":"metro:bundling:progress","_t":1790015145993,"id":"1","progress":0.8815595503777564,"total":442,"current":415}
+{"_e":"metro:bundling:progress","_t":1790015146115,"id":"1","progress":0.9313514235045098,"total":458,"current":442}
+{"_e":"metro:bundling:progress","_t":1790015146217,"id":"1","progress":0.9873017160939592,"total":471,"current":468}
+{"_e":"metro:bundling:progress","_t":1790015146331,"id":"1","progress":0.9957582232319544,"total":471,"current":470}
+{"_e":"metro:bundling:progress","_t":1790015147569,"id":"1","progress":0.999,"total":471,"current":471}
+{"_e":"metro:bundling:progress","_t":1790015147669,"id":"1","progress":0.999,"total":473,"current":473}
+{"_e":"metro:bundling:done","_t":1790015147766,"id":"1","total":473,"ms":5166.2632}
+{"_e":"metro:bundling:started","_t":1790015147891,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-sqlite\\web\\worker.ts"}
+{"_e":"metro:bundling:progress","_t":1790015147891,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790015147893,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790015147911,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:bundling:progress","_t":1790015147912,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790015147912,"level":"warn","data":["[expo-notifications] Listening to push token changes is not yet fully supported on web. Adding a listener will have no effect."]}
+{"_e":"metro:bundling:progress","_t":1790015147912,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790015147912,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:progress","_t":1790015147912,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790015147913,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:bundling:progress","_t":1790015147913,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790015147994,"id":"2","progress":0.0625,"total":12,"current":3}
+{"_e":"metro:bundling:progress","_t":1790015148096,"id":"2","progress":0.6173469387755102,"total":14,"current":11}
+{"_e":"metro:bundling:progress","_t":1790015148201,"id":"2","progress":0.87890625,"total":16,"current":15}
+{"_e":"metro:bundling:progress","_t":1790015148449,"id":"2","progress":0.999,"total":16,"current":16}
+{"_e":"metro:bundling:done","_t":1790015148469,"id":"2","total":16,"ms":577.8893}
+{"_e":"metro:client_log","_t":1790015148580,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"root:init","_t":1790015671602,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1790015671603,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1790015671605,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1790015671918,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1790015672186,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1790015672347,"plugins":[{"packageName":"expo-sqlite","bannerTitle":"expo-sqlite","cliBanner":false,"webpageEndpoint":"/_expo/plugins/expo-sqlite"}]}
+{"_e":"metro:instantiate","_t":1790015676786,"atlas":false,"workers":9,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1790015677030,"id":"1","platform":"web","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1790015677030,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790015677036,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790015677693,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1790015677793,"id":"1","progress":0.010000000000000002,"total":3,"current":1}
+{"_e":"metro:bundling:progress","_t":1790015677966,"id":"1","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1790015678069,"id":"1","progress":0.04000000000000001,"total":37,"current":4}
+{"_e":"metro:bundling:progress","_t":1790015678201,"id":"1","progress":0.04000000000000001,"total":37,"current":5}
+{"_e":"metro:bundling:progress","_t":1790015678304,"id":"1","progress":0.04000000000000001,"total":47,"current":6}
+{"_e":"metro:bundling:progress","_t":1790015678423,"id":"1","progress":0.04000000000000001,"total":48,"current":8}
+{"_e":"metro:bundling:progress","_t":1790015678535,"id":"1","progress":0.04000000000000001,"total":48,"current":9}
+{"_e":"metro:bundling:progress","_t":1790015678635,"id":"1","progress":0.04340277777777778,"total":48,"current":10}
+{"_e":"metro:bundling:progress","_t":1790015678680,"id":"1","progress":0.052517361111111105,"total":48,"current":11}
+{"_e":"metro:bundling:progress","_t":1790015678786,"id":"1","progress":0.10710743801652893,"total":55,"current":18}
+{"_e":"metro:bundling:progress","_t":1790015678895,"id":"1","progress":0.2094225797184717,"total":59,"current":27}
+{"_e":"metro:bundling:progress","_t":1790015678996,"id":"1","progress":0.28541940326515297,"total":73,"current":39}
+{"_e":"metro:bundling:progress","_t":1790015679096,"id":"1","progress":0.2985439472845148,"total":97,"current":53}
+{"_e":"metro:bundling:progress","_t":1790015679198,"id":"1","progress":0.2985439472845148,"total":160,"current":72}
+{"_e":"metro:bundling:progress","_t":1790015679300,"id":"1","progress":0.2985439472845148,"total":183,"current":98}
+{"_e":"metro:bundling:progress","_t":1790015679399,"id":"1","progress":0.4231313036101424,"total":206,"current":134}
+{"_e":"metro:bundling:progress","_t":1790015679502,"id":"1","progress":0.459445737994783,"total":239,"current":162}
+{"_e":"metro:bundling:progress","_t":1790015679601,"id":"1","progress":0.5472699382263927,"total":269,"current":199}
+{"_e":"metro:bundling:progress","_t":1790015679701,"id":"1","progress":0.5472699382263927,"total":310,"current":228}
+{"_e":"metro:bundling:progress","_t":1790015679802,"id":"1","progress":0.6132965597329075,"total":332,"current":260}
+{"_e":"metro:bundling:progress","_t":1790015679902,"id":"1","progress":0.68282214846723,"total":357,"current":295}
+{"_e":"metro:bundling:progress","_t":1790015680007,"id":"1","progress":0.7269806094182826,"total":380,"current":324}
+{"_e":"metro:bundling:progress","_t":1790015680111,"id":"1","progress":0.8024247424711685,"total":403,"current":361}
+{"_e":"metro:bundling:progress","_t":1790015680212,"id":"1","progress":0.8555130181920513,"total":413,"current":382}
+{"_e":"metro:bundling:progress","_t":1790015680313,"id":"1","progress":0.8823330387577326,"total":445,"current":418}
+{"_e":"metro:bundling:progress","_t":1790015680414,"id":"1","progress":0.9359827969941794,"total":461,"current":446}
+{"_e":"metro:bundling:progress","_t":1790015680516,"id":"1","progress":0.9873285334673945,"total":472,"current":469}
+{"_e":"metro:bundling:progress","_t":1790015680618,"id":"1","progress":0.9957672005170928,"total":472,"current":471}
+{"_e":"metro:bundling:progress","_t":1790015681800,"id":"1","progress":0.999,"total":472,"current":472}
+{"_e":"metro:bundling:progress","_t":1790015681900,"id":"1","progress":0.999,"total":474,"current":474}
+{"_e":"metro:bundling:done","_t":1790015681963,"id":"1","total":474,"ms":4932.7767}
+{"_e":"metro:bundling:started","_t":1790015682087,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-sqlite\\web\\worker.ts"}
+{"_e":"metro:bundling:progress","_t":1790015682088,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790015682089,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790015682101,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:bundling:progress","_t":1790015682102,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790015682102,"level":"warn","data":["[expo-notifications] Listening to push token changes is not yet fully supported on web. Adding a listener will have no effect."]}
+{"_e":"metro:bundling:progress","_t":1790015682103,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790015682103,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:bundling:progress","_t":1790015682103,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790015682103,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:progress","_t":1790015682103,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790015682199,"id":"2","progress":0.34027777777777785,"total":12,"current":7}
+{"_e":"metro:bundling:progress","_t":1790015682300,"id":"2","progress":0.765625,"total":16,"current":14}
+{"_e":"metro:bundling:progress","_t":1790015682409,"id":"2","progress":0.87890625,"total":16,"current":15}
+{"_e":"metro:bundling:progress","_t":1790015682575,"id":"2","progress":0.999,"total":16,"current":16}
+{"_e":"metro:bundling:done","_t":1790015682589,"id":"2","total":16,"ms":502.0283}
+{"_e":"metro:client_log","_t":1790015682691,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1790015682735,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"root:init","_t":1790016119011,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1790016119012,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1790016119013,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1790016119320,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1790016119593,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1790016119752,"plugins":[{"packageName":"expo-sqlite","bannerTitle":"expo-sqlite","cliBanner":false,"webpageEndpoint":"/_expo/plugins/expo-sqlite"}]}
+{"_e":"metro:instantiate","_t":1790016124247,"atlas":false,"workers":9,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1790016124590,"id":"1","platform":"web","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1790016124590,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790016124595,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790016125313,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1790016125413,"id":"1","progress":0.010000000000000002,"total":3,"current":1}
+{"_e":"metro:bundling:progress","_t":1790016125464,"id":"1","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1790016125571,"id":"1","progress":0.16000000000000003,"total":9,"current":4}
+{"_e":"metro:bundling:progress","_t":1790016126150,"id":"1","progress":0.25,"total":9,"current":5}
+{"_e":"metro:bundling:progress","_t":1790016126250,"id":"1","progress":0.38525564803804996,"total":29,"current":18}
+{"_e":"metro:bundling:progress","_t":1790016126355,"id":"1","progress":0.5625,"total":40,"current":30}
+{"_e":"metro:bundling:progress","_t":1790016126454,"id":"1","progress":0.5625,"total":72,"current":42}
+{"_e":"metro:bundling:progress","_t":1790016126555,"id":"1","progress":0.5625,"total":88,"current":48}
+{"_e":"metro:bundling:progress","_t":1790016126657,"id":"1","progress":0.5625,"total":93,"current":52}
+{"_e":"metro:bundling:progress","_t":1790016126765,"id":"1","progress":0.5625,"total":101,"current":63}
+{"_e":"metro:bundling:progress","_t":1790016126865,"id":"1","progress":0.5625,"total":125,"current":80}
+{"_e":"metro:bundling:progress","_t":1790016126970,"id":"1","progress":0.5625,"total":177,"current":93}
+{"_e":"metro:bundling:progress","_t":1790016127073,"id":"1","progress":0.5625,"total":191,"current":108}
+{"_e":"metro:bundling:progress","_t":1790016127172,"id":"1","progress":0.5625,"total":199,"current":121}
+{"_e":"metro:bundling:progress","_t":1790016127272,"id":"1","progress":0.5625,"total":217,"current":136}
+{"_e":"metro:bundling:progress","_t":1790016127373,"id":"1","progress":0.5625,"total":232,"current":167}
+{"_e":"metro:bundling:progress","_t":1790016127474,"id":"1","progress":0.5757089433602325,"total":257,"current":195}
+{"_e":"metro:bundling:progress","_t":1790016127575,"id":"1","progress":0.5757089433602325,"total":293,"current":218}
+{"_e":"metro:bundling:progress","_t":1790016127675,"id":"1","progress":0.6380201094614153,"total":323,"current":258}
+{"_e":"metro:bundling:progress","_t":1790016127776,"id":"1","progress":0.6426843731469055,"total":358,"current":287}
+{"_e":"metro:bundling:progress","_t":1790016127876,"id":"1","progress":0.6426843731469055,"total":387,"current":308}
+{"_e":"metro:bundling:progress","_t":1790016127977,"id":"1","progress":0.7199265381083564,"total":396,"current":336}
+{"_e":"metro:bundling:progress","_t":1790016128080,"id":"1","progress":0.7891648600245076,"total":412,"current":366}
+{"_e":"metro:bundling:progress","_t":1790016128180,"id":"1","progress":0.8610113574905355,"total":430,"current":399}
+{"_e":"metro:bundling:progress","_t":1790016128280,"id":"1","progress":0.9387456790123457,"total":450,"current":436}
+{"_e":"metro:bundling:progress","_t":1790016128385,"id":"1","progress":0.9826843100189037,"total":460,"current":456}
+{"_e":"metro:bundling:progress","_t":1790016128490,"id":"1","progress":0.9957672005170928,"total":472,"current":471}
+{"_e":"metro:bundling:progress","_t":1790016129185,"id":"1","progress":0.999,"total":472,"current":472}
+{"_e":"metro:bundling:progress","_t":1790016129288,"id":"1","progress":0.999,"total":474,"current":474}
+{"_e":"metro:bundling:done","_t":1790016129338,"id":"1","total":474,"ms":4748.0946}
+{"_e":"metro:bundling:started","_t":1790016129461,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-sqlite\\web\\worker.ts"}
+{"_e":"metro:bundling:progress","_t":1790016129461,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790016129462,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790016129476,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:bundling:progress","_t":1790016129477,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790016129477,"level":"warn","data":["[expo-notifications] Listening to push token changes is not yet fully supported on web. Adding a listener will have no effect."]}
+{"_e":"metro:bundling:progress","_t":1790016129477,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790016129477,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:bundling:progress","_t":1790016129477,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790016129478,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:progress","_t":1790016129478,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790016129572,"id":"2","progress":0.34027777777777785,"total":12,"current":7}
+{"_e":"metro:bundling:progress","_t":1790016129671,"id":"2","progress":0.765625,"total":16,"current":14}
+{"_e":"metro:bundling:progress","_t":1790016129772,"id":"2","progress":0.87890625,"total":16,"current":15}
+{"_e":"metro:bundling:progress","_t":1790016129956,"id":"2","progress":0.999,"total":16,"current":16}
+{"_e":"metro:bundling:done","_t":1790016129972,"id":"2","total":16,"ms":511.2201}
+{"_e":"metro:client_log","_t":1790016130090,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1790016130130,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"root:init","_t":1790016458605,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1790016458606,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1790016458608,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1790016458962,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1790016459254,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1790016459423,"plugins":[{"packageName":"expo-sqlite","bannerTitle":"expo-sqlite","cliBanner":false,"webpageEndpoint":"/_expo/plugins/expo-sqlite"}]}
+{"_e":"metro:instantiate","_t":1790016465095,"atlas":false,"workers":9,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1790016465445,"id":"1","platform":"web","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1790016465445,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790016465451,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790016466142,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1790016466241,"id":"1","progress":0.010000000000000002,"total":3,"current":1}
+{"_e":"metro:bundling:progress","_t":1790016466420,"id":"1","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1790016466523,"id":"1","progress":0.04000000000000001,"total":28,"current":4}
+{"_e":"metro:bundling:progress","_t":1790016466658,"id":"1","progress":0.04000000000000001,"total":28,"current":5}
+{"_e":"metro:bundling:progress","_t":1790016466759,"id":"1","progress":0.04000000000000001,"total":38,"current":6}
+{"_e":"metro:bundling:progress","_t":1790016466867,"id":"1","progress":0.04000000000000001,"total":38,"current":7}
+{"_e":"metro:bundling:progress","_t":1790016466971,"id":"1","progress":0.042077580539118996,"total":39,"current":8}
+{"_e":"metro:bundling:progress","_t":1790016467025,"id":"1","progress":0.053254437869822494,"total":39,"current":9}
+{"_e":"metro:bundling:progress","_t":1790016467134,"id":"1","progress":0.059488399762046396,"total":41,"current":10}
+{"_e":"metro:bundling:progress","_t":1790016467157,"id":"1","progress":0.07198096371207616,"total":41,"current":11}
+{"_e":"metro:bundling:progress","_t":1790016467257,"id":"1","progress":0.13082842915346313,"total":47,"current":17}
+{"_e":"metro:bundling:progress","_t":1790016467370,"id":"1","progress":0.2330558858501784,"total":58,"current":28}
+{"_e":"metro:bundling:progress","_t":1790016467476,"id":"1","progress":0.28027681660899656,"total":68,"current":36}
+{"_e":"metro:bundling:progress","_t":1790016467579,"id":"1","progress":0.28027681660899656,"total":146,"current":51}
+{"_e":"metro:bundling:progress","_t":1790016467679,"id":"1","progress":0.28027681660899656,"total":158,"current":65}
+{"_e":"metro:bundling:progress","_t":1790016467781,"id":"1","progress":0.2997409568989732,"total":179,"current":98}
+{"_e":"metro:bundling:progress","_t":1790016467881,"id":"1","progress":0.4244719926538108,"total":198,"current":129}
+{"_e":"metro:bundling:progress","_t":1790016467982,"id":"1","progress":0.4687931174417661,"total":222,"current":152}
+{"_e":"metro:bundling:progress","_t":1790016468083,"id":"1","progress":0.4687931174417661,"total":276,"current":183}
+{"_e":"metro:bundling:progress","_t":1790016468184,"id":"1","progress":0.47859177640419237,"total":305,"current":211}
+{"_e":"metro:bundling:progress","_t":1790016468284,"id":"1","progress":0.616298366669578,"total":321,"current":252}
+{"_e":"metro:bundling:progress","_t":1790016468384,"id":"1","progress":0.6539886578449905,"total":345,"current":279}
+{"_e":"metro:bundling:progress","_t":1790016468484,"id":"1","progress":0.696704636423058,"total":369,"current":308}
+{"_e":"metro:bundling:progress","_t":1790016468588,"id":"1","progress":0.7673216753800853,"total":387,"current":339}
+{"_e":"metro:bundling:progress","_t":1790016468688,"id":"1","progress":0.8158168574401664,"total":403,"current":364}
+{"_e":"metro:bundling:progress","_t":1790016468789,"id":"1","progress":0.8752741212456069,"total":419,"current":392}
+{"_e":"metro:bundling:progress","_t":1790016468894,"id":"1","progress":0.8752741212456069,"total":458,"current":421}
+{"_e":"metro:bundling:progress","_t":1790016468994,"id":"1","progress":0.9616649323621227,"total":465,"current":456}
+{"_e":"metro:bundling:progress","_t":1790016469102,"id":"1","progress":0.9873285334673945,"total":472,"current":469}
+{"_e":"metro:bundling:progress","_t":1790016469219,"id":"1","progress":0.9957672005170928,"total":472,"current":471}
+{"_e":"metro:bundling:progress","_t":1790016470340,"id":"1","progress":0.999,"total":472,"current":472}
+{"_e":"metro:bundling:progress","_t":1790016470441,"id":"1","progress":0.999,"total":474,"current":474}
+{"_e":"metro:bundling:done","_t":1790016470533,"id":"1","total":474,"ms":5088.4225}
+{"_e":"metro:bundling:started","_t":1790016470692,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-sqlite\\web\\worker.ts"}
+{"_e":"metro:bundling:progress","_t":1790016470692,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790016470695,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790016470718,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:bundling:progress","_t":1790016470719,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790016470719,"level":"warn","data":["[expo-notifications] Listening to push token changes is not yet fully supported on web. Adding a listener will have no effect."]}
+{"_e":"metro:bundling:progress","_t":1790016470719,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790016470719,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:bundling:progress","_t":1790016470719,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1790016470720,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:progress","_t":1790016470720,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1790016470797,"id":"2","progress":0.17361111111111113,"total":12,"current":5}
+{"_e":"metro:bundling:progress","_t":1790016470902,"id":"2","progress":0.5102040816326531,"total":14,"current":10}
+{"_e":"metro:bundling:progress","_t":1790016471019,"id":"2","progress":0.87890625,"total":16,"current":15}
+{"_e":"metro:bundling:progress","_t":1790016471270,"id":"2","progress":0.999,"total":16,"current":16}
+{"_e":"metro:bundling:done","_t":1790016471286,"id":"2","total":16,"ms":593.9553}
+{"_e":"metro:client_log","_t":1790016471433,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1790016471484,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:bundling:started","_t":1790016640498,"id":"5","platform":"web","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1790016640498,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1790016640533,"id":"5","total":1,"ms":34.5649}
+{"_e":"metro:bundling:started","_t":1790016640671,"id":"6","platform":"web","environment":null,"entry":"node_modules\\expo-sqlite\\web\\worker.ts"}
+{"_e":"metro:bundling:progress","_t":1790016640671,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1790016640679,"id":"6","total":1,"ms":8.7646}
+{"_e":"metro:client_log","_t":1790016640713,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1790016640714,"level":"warn","data":["[expo-notifications] Listening to push token changes is not yet fully supported on web. Adding a listener will have no effect."]}
+{"_e":"metro:client_log","_t":1790016640715,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1790016640716,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1790016643707,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1790016649237,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
