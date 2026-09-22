@@ -4,12 +4,14 @@ import {
   Alert,
   Modal,
   Pressable,
-  SafeAreaView,
+  Platform,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { SafeAreaProvider, SafeAreaView, initialWindowMetrics, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
+import * as Notifications from 'expo-notifications';
 import { DoseEditor } from './src/components/DoseEditor';
 import { PlanForm } from './src/components/PlanForm';
 import {
@@ -19,6 +21,7 @@ import {
   getActivePlan,
   getAppSetting,
   getDoseByDate,
+  getDoseById,
   getMonthDoses,
   getRecentDoses,
   initDatabase,
@@ -33,15 +36,31 @@ import { CalendarScreen } from './src/screens/CalendarScreen';
 import { HistoryScreen } from './src/screens/HistoryScreen';
 import { SettingsScreen } from './src/screens/SettingsScreen';
 import { TodayScreen } from './src/screens/TodayScreen';
-import { cancelPillNotifications, schedulePlanNotifications } from './src/services/notifications';
+import {
+  ALARM_ACTION_SNOOZE,
+  ALARM_ACTION_TAKEN,
+  cancelPillNotifications,
+  cancelScheduledForDose,
+  schedulePlanNotifications,
+  scheduleSnoozeNotification,
+  testAlarmNotification,
+} from './src/services/notifications';
 import { ThemeProvider } from './src/ThemeContext';
 import { AppTheme, ThemeKey, appThemes, getTheme } from './src/theme';
-import { DoseRecord, DoseStatus, MedicationPlan, PlanInput } from './src/types';
+import { AlarmPreferences, DoseRecord, DoseStatus, MedicationPlan, PlanInput, ReminderMode } from './src/types';
 import { addDaysISO, dateAtTime, todayISO } from './src/utils/date';
 
 type Tab = 'today' | 'calendar' | 'history' | 'settings';
 
 export default function App() {
+  return (
+    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      <AppContent />
+    </SafeAreaProvider>
+  );
+}
+
+function AppContent() {
   const [ready, setReady] = useState(false);
   const [plan, setPlan] = useState<MedicationPlan | null>(null);
   const [todayDose, setTodayDose] = useState<DoseRecord | null>(null);
@@ -54,11 +73,23 @@ export default function App() {
   const [deletedCount, setDeletedCount] = useState(0);
   const [themeKey, setThemeKey] = useState<ThemeKey>('rose');
   const [quickThemeOpen, setQuickThemeOpen] = useState(false);
+  const [reminderMode, setReminderMode] = useState<ReminderMode>('notification');
+  const [alarmRepeatMinutes, setAlarmRepeatMinutes] = useState(5);
+  const [alarmRepeatCount, setAlarmRepeatCount] = useState(5);
+  const insets = useSafeAreaInsets();
 
   const today = useMemo(() => todayISO(), []);
   const theme = useMemo(() => getTheme(themeKey), [themeKey]);
   const styles = useMemo(() => createStyles(theme), [theme]);
   const pageBackground = theme.colors.backdrop;
+  const bottomSafe = Math.max(insets.bottom, 8);
+  const navHeight = 70;
+  const bottomReserved = bottomSafe + navHeight + 12;
+  const alarmPreferences = useMemo<AlarmPreferences>(() => ({
+    mode: reminderMode,
+    repeatMinutes: alarmRepeatMinutes,
+    repeatCount: alarmRepeatCount,
+  }), [reminderMode, alarmRepeatMinutes, alarmRepeatCount]);
 
   const reloadData = useCallback(async (activePlan?: MedicationPlan | null) => {
     const currentPlan = activePlan === undefined ? await getActivePlan() : activePlan;
@@ -90,7 +121,11 @@ export default function App() {
     setDeletedCount(deleted);
   }, [monthDate, today]);
 
-  const reschedule = useCallback(async (activePlan: MedicationPlan, requestPermission = false) => {
+  const reschedule = useCallback(async (
+    activePlan: MedicationPlan,
+    requestPermission = false,
+    preferencesOverride?: AlarmPreferences
+  ) => {
     await ensureDoseRecords(activePlan, today, 90);
     const now = new Date();
     const end = new Date(now.getFullYear(), now.getMonth() + 3, 1, 12);
@@ -105,8 +140,13 @@ export default function App() {
       pool.push(...rows);
     }
 
-    await schedulePlanNotifications(activePlan, pool, requestPermission);
-  }, [today]);
+    await schedulePlanNotifications(
+      activePlan,
+      pool,
+      requestPermission,
+      preferencesOverride ?? alarmPreferences
+    );
+  }, [today, alarmPreferences]);
 
   useEffect(() => {
     (async () => {
@@ -115,9 +155,22 @@ export default function App() {
         const savedTheme = await getAppSetting('app_theme');
         const legacyTheme = savedTheme ?? await getAppSetting('background_theme');
         setThemeKey(getTheme(legacyTheme).key);
+
+        const savedMode = await getAppSetting('reminder_mode');
+        const savedRepeatMinutes = Number(await getAppSetting('alarm_repeat_minutes'));
+        const savedRepeatCount = Number(await getAppSetting('alarm_repeat_count'));
+        const initialPreferences: AlarmPreferences = {
+          mode: savedMode === 'alarm' ? 'alarm' : 'notification',
+          repeatMinutes: [1, 2, 5, 10].includes(savedRepeatMinutes) ? savedRepeatMinutes : 5,
+          repeatCount: [3, 5, 8].includes(savedRepeatCount) ? savedRepeatCount : 5,
+        };
+        setReminderMode(initialPreferences.mode);
+        setAlarmRepeatMinutes(initialPreferences.repeatMinutes);
+        setAlarmRepeatCount(initialPreferences.repeatCount);
+
         const activePlan = await getActivePlan();
         await reloadData(activePlan);
-        if (activePlan) await reschedule(activePlan, false);
+        if (activePlan) await reschedule(activePlan, false, initialPreferences);
       } catch (error) {
         console.error(error);
         Alert.alert('Erro ao iniciar', 'Não foi possível abrir o banco local do aplicativo.');
@@ -134,6 +187,62 @@ export default function App() {
       setMonthDoses(month);
     })();
   }, [monthDate, ready, plan]);
+
+  useEffect(() => {
+    if (!ready || Platform.OS === 'web') return;
+    const handled = new Set<string>();
+
+    async function handleNotificationResponse(response: Notifications.NotificationResponse) {
+      const key = `${response.notification.request.identifier}:${response.actionIdentifier}`;
+      if (handled.has(key)) return;
+      handled.add(key);
+
+      try {
+        const action = response.actionIdentifier;
+        const data = response.notification.request.content.data;
+        const doseId = Number(data?.doseId);
+
+        if (!Number.isFinite(doseId)) {
+          setTab('today');
+          return;
+        }
+
+        const activePlan = await getActivePlan();
+        if (!activePlan) return;
+        const dose = await getDoseById(doseId);
+        if (!dose) return;
+
+        if (action === ALARM_ACTION_TAKEN) {
+          await cancelScheduledForDose(dose.id);
+          await updateDose(dose.id, 'taken', new Date().toISOString(), dose.notes);
+          await reloadData(activePlan);
+          await reschedule(activePlan, false);
+          setTab('today');
+          return;
+        }
+
+        if (action === ALARM_ACTION_SNOOZE) {
+          await scheduleSnoozeNotification(dose, alarmPreferences);
+          setTab('today');
+          Alert.alert('Alarme adiado', 'O próximo alarme tocará em 5 minutos.');
+          return;
+        }
+
+        setTab('today');
+      } finally {
+        Notifications.clearLastNotificationResponse();
+      }
+    }
+
+    const lastResponse = Notifications.getLastNotificationResponse();
+    if (lastResponse) void handleNotificationResponse(lastResponse);
+
+    const subscription = Notifications.addNotificationResponseReceivedListener((response) => {
+      void handleNotificationResponse(response);
+    });
+
+    return () => subscription.remove();
+  }, [ready, alarmPreferences, reloadData, reschedule]);
 
   async function handleSavePlan(input: PlanInput) {
     const existingId = plan?.id;
@@ -152,6 +261,7 @@ export default function App() {
 
   async function quickUpdate(status: DoseStatus) {
     if (!todayDose) return;
+    await cancelScheduledForDose(todayDose.id);
     await updateDose(todayDose.id, status, status === 'taken' ? new Date().toISOString() : null, todayDose.notes);
     await reloadData(plan);
     if (plan) await reschedule(plan, false);
@@ -165,6 +275,7 @@ export default function App() {
         ? dateAtTime(editingDose.scheduled_date, takenTime).toISOString()
         : new Date().toISOString();
     }
+    await cancelScheduledForDose(editingDose.id);
     await updateDose(editingDose.id, status, takenAt, notes);
     setEditingDose(null);
     await reloadData(plan);
@@ -173,6 +284,7 @@ export default function App() {
 
   async function deleteEditedDose() {
     if (!editingDose) return;
+    await cancelScheduledForDose(editingDose.id);
     await softDeleteDose(editingDose.id);
     setEditingDose(null);
     await reloadData(plan);
@@ -195,6 +307,45 @@ export default function App() {
     setQuickThemeOpen(false);
   }
 
+  async function changeReminderMode(nextMode: ReminderMode) {
+    setReminderMode(nextMode);
+    await setAppSetting('reminder_mode', nextMode);
+    if (plan) {
+      await reschedule(plan, true, {
+        mode: nextMode,
+        repeatMinutes: alarmRepeatMinutes,
+        repeatCount: alarmRepeatCount,
+      });
+    }
+  }
+
+  async function changeAlarmRepeatMinutes(minutes: number) {
+    const safe = [1, 2, 5, 10].includes(minutes) ? minutes : 5;
+    setAlarmRepeatMinutes(safe);
+    await setAppSetting('alarm_repeat_minutes', String(safe));
+    if (plan && reminderMode === 'alarm') {
+      await reschedule(plan, false, { mode: 'alarm', repeatMinutes: safe, repeatCount: alarmRepeatCount });
+    }
+  }
+
+  async function changeAlarmRepeatCount(count: number) {
+    const safe = [3, 5, 8].includes(count) ? count : 5;
+    setAlarmRepeatCount(safe);
+    await setAppSetting('alarm_repeat_count', String(safe));
+    if (plan && reminderMode === 'alarm') {
+      await reschedule(plan, false, { mode: 'alarm', repeatMinutes: alarmRepeatMinutes, repeatCount: safe });
+    }
+  }
+
+  async function testAlarm() {
+    const ok = await testAlarmNotification();
+    if (ok) {
+      Alert.alert('Teste agendado', 'O alarme de teste tocará em aproximadamente 10 segundos.');
+    } else {
+      Alert.alert('Permissão necessária', 'Ative as notificações do Dose Certa para testar o alarme.');
+    }
+  }
+
   async function wipeAll() {
     await cancelPillNotifications();
     await deleteAllData();
@@ -206,6 +357,9 @@ export default function App() {
     setEditingDose(null);
     setEditingPlan(false);
     setThemeKey('rose');
+    setReminderMode('notification');
+    setAlarmRepeatMinutes(5);
+    setAlarmRepeatCount(5);
     setTab('today');
   }
 
@@ -216,7 +370,7 @@ export default function App() {
           <StatusBar style={theme.dark ? 'light' : 'dark'} />
           <View style={styles.loadingMark}><Text style={styles.loadingEmoji}>💊</Text></View>
           <ActivityIndicator size="large" color={theme.colors.primary} />
-          <Text style={styles.loadingTitle}>Pílula em Dia</Text>
+          <Text style={styles.loadingTitle}>Dose Certa</Text>
           <Text style={styles.loadingText}>Abrindo seu controle...</Text>
         </SafeAreaView>
       </ThemeProvider>
@@ -238,7 +392,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <SafeAreaView style={styles.safe}>
         <StatusBar style={theme.dark ? 'light' : 'dark'} />
-        <View style={styles.content}>
+        <View style={[styles.content, { paddingBottom: bottomReserved }]}>
           {tab === 'today' ? (
             <TodayScreen
               pageBackground={pageBackground}
@@ -271,6 +425,13 @@ export default function App() {
               onEditPlan={() => setEditingPlan(true)}
               onRestoreDeleted={restoreDeleted}
               onDeleteAll={wipeAll}
+              reminderMode={reminderMode}
+              alarmRepeatMinutes={alarmRepeatMinutes}
+              alarmRepeatCount={alarmRepeatCount}
+              onReminderModeChange={changeReminderMode}
+              onAlarmRepeatMinutesChange={changeAlarmRepeatMinutes}
+              onAlarmRepeatCountChange={changeAlarmRepeatCount}
+              onTestAlarm={testAlarm}
             />
           )}
         </View>
@@ -279,13 +440,13 @@ export default function App() {
           accessibilityRole="button"
           accessibilityLabel="Trocar tema do aplicativo"
           onPress={() => setQuickThemeOpen(true)}
-          style={({ pressed }) => [styles.quickThemeButton, pressed && styles.quickThemeButtonPressed]}
+          style={({ pressed }) => [styles.quickThemeButton, { bottom: bottomReserved + 8 }, pressed && styles.quickThemeButtonPressed]}
         >
           <Text style={styles.quickThemeIcon}>🎨</Text>
           <View style={[styles.quickThemeDot, { backgroundColor: theme.colors.primary }]} />
         </Pressable>
 
-        <View style={styles.navBackdrop} pointerEvents="box-none">
+        <View style={[styles.navBackdrop, { bottom: bottomSafe }]} pointerEvents="box-none">
           <View style={styles.nav}>
             <TabButton theme={theme} icon="⌂" label="Hoje" active={tab === 'today'} onPress={() => { setMonthDate(new Date()); setTab('today'); }} />
             <TabButton theme={theme} icon="▦" label="Calendário" active={tab === 'calendar'} onPress={() => setTab('calendar')} />
@@ -300,7 +461,7 @@ export default function App() {
           animationType="fade"
           onRequestClose={() => setQuickThemeOpen(false)}
         >
-          <Pressable style={styles.themeModalBackdrop} onPress={() => setQuickThemeOpen(false)}>
+          <Pressable style={[styles.themeModalBackdrop, { paddingBottom: Math.max(insets.bottom, 14) }]} onPress={() => setQuickThemeOpen(false)}>
             <Pressable style={styles.themeModalCard} onPress={() => {}}>
               <View style={styles.themeModalHeader}>
                 <View style={{ flex: 1 }}>
@@ -400,7 +561,7 @@ function createStyles(theme: AppTheme) {
     loadingTitle: { color: c.text, fontSize: 20, fontWeight: '900' },
     loadingText: { color: c.muted, fontSize: 12, fontWeight: '700' },
     quickThemeButton: {
-      position: 'absolute', right: 18, bottom: 88, width: 52, height: 52, borderRadius: 18,
+      position: 'absolute', right: 18, width: 52, height: 52, borderRadius: 18,
       backgroundColor: c.surface, borderWidth: 1, borderColor: c.border, alignItems: 'center', justifyContent: 'center',
       shadowColor: c.shadow, shadowOpacity: theme.dark ? 0.35 : 0.14, shadowRadius: 14,
       shadowOffset: { width: 0, height: 7 }, elevation: 8, zIndex: 20,
@@ -430,7 +591,7 @@ function createStyles(theme: AppTheme) {
     themeQuickCheckText: { color: c.white, fontSize: 11, fontWeight: '900' },
     themeQuickLabel: { color: c.muted, fontSize: 10, fontWeight: '800', textAlign: 'center' },
     themeQuickLabelActive: { color: c.primaryDark },
-    navBackdrop: { position: 'absolute', bottom: 0, left: 0, right: 0, alignItems: 'center', paddingHorizontal: 12, paddingBottom: 10 },
+    navBackdrop: { position: 'absolute', left: 0, right: 0, alignItems: 'center', paddingHorizontal: 12 },
     nav: {
       width: '100%', maxWidth: 760, flexDirection: 'row', borderWidth: 1, borderColor: c.border,
       backgroundColor: c.surface, borderRadius: 24, padding: 7,

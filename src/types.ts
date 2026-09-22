@@ -1,5 +1,12 @@
 export type DoseStatus = 'pending' | 'taken' | 'missed' | 'break';
 export type DoseKind = 'pill' | 'break';
+export type ReminderMode = 'notification' | 'alarm';
+
+export interface AlarmPreferences {
+  mode: ReminderMode;
+  repeatMinutes: number;
+  repeatCount: number;
+}
 
 export interface MedicationPlan {
   id: number;

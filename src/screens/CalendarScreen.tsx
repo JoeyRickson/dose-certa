@@ -162,7 +162,7 @@ const mini = StyleSheet.create({
 
 function createStyles(c: AppColors) {
   return StyleSheet.create({
-    outer: { flexGrow: 1, backgroundColor: c.backdrop, padding: 16, paddingBottom: 110 },
+    outer: { flexGrow: 1, backgroundColor: c.backdrop, padding: 16, paddingBottom: 28 },
     shell: { width: '100%', maxWidth: 760, alignSelf: 'center', gap: 16 },
     header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12 },
     eyebrow: { color: c.primary, fontWeight: '900', fontSize: 10, letterSpacing: 1.3 },

@@ -2,7 +2,22 @@ import * as SQLite from 'expo-sqlite';
 import { DoseRecord, DoseStatus, MedicationPlan, PlanInput } from '../types';
 import { addDaysISO, diffDays, monthBounds, todayISO } from '../utils/date';
 
-const dbPromise = SQLite.openDatabaseAsync('pilula-em-dia.db');
+/*const dbPromise = SQLite.openDatabaseAsync('pilula-em-dia.db');
+
+async function db() {
+  return dbPromise;
+}*/
+declare global {
+  var __doseCertaDbPromise:
+    | ReturnType<typeof SQLite.openDatabaseAsync>
+    | undefined;
+}
+
+const dbPromise =
+  globalThis.__doseCertaDbPromise ??
+  SQLite.openDatabaseAsync('pilula-em-dia.db');
+
+globalThis.__doseCertaDbPromise = dbPromise;
 
 async function db() {
   return dbPromise;

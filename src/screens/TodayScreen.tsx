@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef } from 'react';
-import { Animated, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Animated, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ProgressRing } from '../components/ProgressRing';
 import { useAppTheme } from '../ThemeContext';
@@ -25,6 +25,10 @@ export function TodayScreen({ pageBackground, plan, dose, monthDoses, today, onT
   const styles = useMemo(() => createStyles(c), [c]);
   const intro = useRef(new Animated.Value(0)).current;
   const successScale = useRef(new Animated.Value(1)).current;
+  const { width, height } = useWindowDimensions();
+  const compact = width < 390;
+  const veryCompact = width < 350;
+  const shortScreen = height < 700;
 
   useEffect(() => {
     Animated.timing(intro, { toValue: 1, duration: 420, useNativeDriver: true }).start();
@@ -59,34 +63,36 @@ export function TodayScreen({ pageBackground, plan, dose, monthDoses, today, onT
   }, [monthDoses, today]);
 
   return (
-    <ScrollView contentContainerStyle={[styles.outer, { backgroundColor: pageBackground }]} showsVerticalScrollIndicator={false}>
+    <ScrollView contentContainerStyle={[styles.outer, { backgroundColor: pageBackground, paddingHorizontal: compact ? 12 : 16 }]} showsVerticalScrollIndicator={false}>
       <Animated.View style={[styles.shell, { opacity: intro, transform: [{ translateY: intro.interpolate({ inputRange: [0, 1], outputRange: [10, 0] }) }] }]}>
-        <View style={styles.topBar}>
-          <View style={styles.brandMark}><Text style={styles.brandEmoji}>💊</Text></View>
+        <View style={[styles.topBar, compact && { gap: 9 }]}>
+          <View style={[styles.brandMark, compact && { width: 42, height: 42, borderRadius: 15 }]}><Text style={[styles.brandEmoji, compact && { fontSize: 22 }]}>💊</Text></View>
           <View style={styles.topText}>
-            <Text style={styles.greeting}>{greeting}</Text>
-            <Text style={styles.date}>{formatDateLong(today)}</Text>
+            <Text style={[styles.greeting, compact && { fontSize: 18 }]}>{greeting}</Text>
+            <Text style={[styles.date, compact && { fontSize: 10 }]} numberOfLines={1} adjustsFontSizeToFit>{formatDateLong(today)}</Text>
           </View>
-          <View style={styles.streakBadge}><Text style={styles.streakIcon}>♡</Text><Text style={styles.streakText}>{adherence}%</Text></View>
+          <View style={[styles.streakBadge, compact && { paddingHorizontal: 8, paddingVertical: 7 }]}><Text style={styles.streakIcon}>♡</Text><Text style={[styles.streakText, compact && { fontSize: 11 }]}>{adherence}%</Text></View>
         </View>
 
-        <LinearGradient colors={theme.heroGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[styles.heroCard, getShadow(theme)]}>
+        <LinearGradient colors={theme.heroGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[styles.heroCard, compact && { padding: 16, borderRadius: 26 }, getShadow(theme)]}>
           <View style={styles.heroHeader}>
             <View style={{ flex: 1, minWidth: 0 }}>
               <Text style={styles.heroKicker}>HOJE • {displayName.toUpperCase()}</Text>
-              <Text style={styles.heroTitle}>{dose?.kind === 'break' ? 'Dia de pausa' : 'Sua dose de hoje'}</Text>
+              <Text style={[styles.heroTitle, compact && { fontSize: 21 }]}>{dose?.kind === 'break' ? 'Dia de pausa' : 'Sua dose de hoje'}</Text>
             </View>
             {dose?.pill_number ? <View style={styles.pillBadge}><Text style={styles.pillBadgeText}>{dose.pill_number}/{plan.pill_count}</Text></View> : null}
           </View>
 
           <View style={styles.heroContent}>
             <ProgressRing
+              size={veryCompact || shortScreen ? 136 : 150}
+              stroke={veryCompact || shortScreen ? 11 : 12}
               progress={progress}
               mainText={dose?.kind === 'break' ? 'Pausa' : dose?.scheduled_time ?? plan.medication_time}
               subText={dose?.kind === 'break' ? `${plan.break_days} dias configurados` : dose?.status === 'taken' ? 'dose registrada' : 'horário programado'}
             />
 
-            <View style={styles.heroInfo}>
+            <View style={[styles.heroInfo, compact && { minWidth: '100%', maxWidth: '100%' }]}>
               {dose?.kind === 'break' ? (
                 <>
                   <Text style={styles.heroBigText}>Hoje não há comprimido programado.</Text>
@@ -114,11 +120,11 @@ export function TodayScreen({ pageBackground, plan, dose, monthDoses, today, onT
           </View>
 
           {dose?.kind === 'pill' && dose.status === 'pending' ? (
-            <View style={styles.actionRow}>
-              <Pressable onPress={onTaken} style={({ pressed }) => [styles.primaryAction, pressed && styles.pressed]}>
+            <View style={[styles.actionRow, compact && { flexDirection: 'column' }]}>
+              <Pressable onPress={onTaken} style={({ pressed }) => [styles.primaryAction, compact && { width: '100%', minWidth: 0 }, pressed && styles.pressed]}>
                 <Text style={styles.primaryActionText}>✓  Tomei</Text>
               </Pressable>
-              <Pressable onPress={onMissed} style={({ pressed }) => [styles.secondaryAction, pressed && styles.pressed]}>
+              <Pressable onPress={onMissed} style={({ pressed }) => [styles.secondaryAction, compact && { width: '100%', minWidth: 0 }, pressed && styles.pressed]}>
                 <Text style={styles.secondaryActionText}>Não tomei</Text>
               </Pressable>
             </View>
@@ -127,12 +133,12 @@ export function TodayScreen({ pageBackground, plan, dose, monthDoses, today, onT
           ) : null}
         </LinearGradient>
 
-        <View style={styles.weekCard}>
+        <View style={[styles.weekCard, compact && { padding: 14, borderRadius: 22 }]}>
           <View style={styles.sectionHeader}>
             <View><Text style={styles.sectionKicker}>VISÃO RÁPIDA</Text><Text style={styles.sectionTitle}>Sua semana</Text></View>
             <Pressable onPress={onOpenCalendar}><Text style={styles.link}>Ver calendário</Text></Pressable>
           </View>
-          <View style={styles.weekRow}>
+          <View style={[styles.weekRow, compact && { gap: 2 }]}>
             {weekItems.map(({ iso, date, record }) => {
               const active = iso === todayISO();
               return (
@@ -198,7 +204,7 @@ function getGreeting() {
 
 function createStyles(c: AppColors) {
   return StyleSheet.create({
-    outer: { flexGrow: 1, backgroundColor: c.backdrop, padding: 16, paddingBottom: 110 },
+    outer: { flexGrow: 1, backgroundColor: c.backdrop, padding: 16, paddingBottom: 28 },
     shell: { width: '100%', maxWidth: 760, alignSelf: 'center', gap: 16 },
     topBar: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 2, paddingTop: 2 },
     brandMark: { width: 46, height: 46, borderRadius: 17, backgroundColor: c.surface, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: c.border },

@@ -1,1 +1,35 @@
 node_modules
+
+# Dependências
+node_modules/
+
+# Expo local
+.expo/
+
+# Builds
+dist/
+web-build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ambiente
+.env
+.env.*
+!.env.example
+
+# Backups locais
+app.json.backup
+
+# Credenciais
+*.jks
+*.keystore
+*.p12
+*.pem
+
+# Sistema
+.DS_Store
+Thumbs.db

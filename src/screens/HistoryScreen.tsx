@@ -107,7 +107,7 @@ function statusBackground(dose: DoseRecord, c: AppColors) {
 
 function createStyles(c: AppColors) {
   return StyleSheet.create({
-    outer: { flexGrow: 1, backgroundColor: c.backdrop, padding: 16, paddingBottom: 110 },
+    outer: { flexGrow: 1, backgroundColor: c.backdrop, padding: 16, paddingBottom: 28 },
     shell: { width: '100%', maxWidth: 760, alignSelf: 'center', gap: 16 },
     eyebrow: { color: c.primary, fontWeight: '900', fontSize: 10, letterSpacing: 1.3 },
     title: { color: c.text, fontSize: 25, fontWeight: '900', marginTop: 3 },

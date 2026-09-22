@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "Pílula em Dia",
+    "name": "Dose Certa",
     "slug": "pilula-em-dia",
-    "version": "2.1.0",
+    "version": "2.4.0",
     "orientation": "portrait",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "android": {
       "package": "com.pilulaemdia.app",
@@ -12,7 +12,11 @@
         "android.permission.POST_NOTIFICATIONS",
         "android.permission.RECEIVE_BOOT_COMPLETED",
         "android.permission.SCHEDULE_EXACT_ALARM"
-      ]
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#FFF9FC"
+      }
     },
     "ios": {
       "bundleIdentifier": "com.pilulaemdia.app",
@@ -26,10 +30,15 @@
       [
         "expo-notifications",
         {
-          "defaultChannel": "pill-reminders"
+          "defaultChannel": "pill-reminders",
+          "sounds": [
+            "./assets/pill_alarm.wav"
+          ]
         }
       ]
     ],
+    "icon": "./assets/icon.png",
+    "owner": "joeyzz2",
     "extra": {
       "eas": {
         "projectId": "656bac7a-8ba5-4900-92e7-0d81b215da7d"

@@ -97,7 +97,7 @@ export function PlanForm({ pageBackground, initial, onSave, onCancel }: Props) {
             <View style={styles.heroIcon}><Text style={styles.heroEmoji}>💊</Text></View>
             <View style={styles.heroText}>
               <Text style={styles.heroKicker}>{initial ? 'AJUSTAR CONTROLE' : 'BEM-VINDA'}</Text>
-              <Text style={styles.title}>{initial ? 'Editar seu lembrete' : 'Pílula em Dia'}</Text>
+              <Text style={styles.title}>{initial ? 'Editar seu lembrete' : 'Dose Certa'}</Text>
               <Text style={styles.subtitle}>{initial ? 'Ajuste o que precisar sem perder o histórico anterior.' : 'Configure em poucos passos. Sem ciclo menstrual, sem excesso de informação.'}</Text>
             </View>
           </LinearGradient>

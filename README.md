@@ -1,4 +1,4 @@
-# Pílula em Dia — V2.1
+# Dose Certa — V2.1
 
 Aplicativo simples para acompanhar o uso diário de pílula anticoncepcional, sem recursos de ciclo menstrual ou previsão de ovulação.
 
@@ -88,8 +88,45 @@ Em **Ajustes > Tema do aplicativo**, é possível alternar entre Rosé, Lavanda,
 
 **Idealizado e desenvolvido por Joey Rickson Guimarães Oliveira.**
 
-Pílula em Dia — projeto pessoal.
+Dose Certa — projeto pessoal.
 
 ## Tema rápido
 
 Além de Ajustes > Tema do aplicativo, a tela principal possui um botão flutuante de paleta (🎨) acima da barra inferior. Ele abre um seletor rápido com todos os temas e salva a escolha no banco local imediatamente.
+
+
+## V2.3 - layout responsivo
+- Safe area real no Android/iOS para status bar e barra de navegação do sistema.
+- Barra inferior sobe automaticamente conforme o aparelho.
+- Botão rápido de tema acompanha a safe area.
+- Tela Hoje reduz espaçamentos e reorganiza ações automaticamente em aparelhos estreitos/baixos.
+- Conteúdo centralizado em telas maiores e tablets.
+- Novo ícone oficial em assets/icon.png.
+
+## V2.4 - Modo Alarme
+
+Além da notificação normal, o app agora oferece **Modo alarme** em Ajustes.
+
+- Som próprio `assets/pill_alarm.wav`, com aproximadamente 18 segundos.
+- Canal Android de importância máxima, usando categoria de áudio de alarme e vibração reforçada.
+- O aviso fica marcado como persistente no Android e não pode ser removido apenas deslizando enquanto está ativo.
+- Repetição configurável: a cada 1, 2, 5 ou 10 minutos, por 3, 5 ou 8 toques.
+- Ações na notificação: **Tomei** e **Adiar 5 min**.
+- Ao tocar em **Tomei**, a dose é registrada com o horário real e os próximos avisos daquela dose são cancelados.
+- Ao tocar em **Adiar 5 min**, os avisos daquela dose são reagendados a partir de cinco minutos depois.
+- Botão **Testar alarme em 10 s** em Ajustes.
+- Atalho para a tela Android de **Alarmes e lembretes**, importante para maior precisão em versões recentes do Android.
+
+### Observação sobre o comportamento do alarme
+
+Esta versão usa os recursos de notificações locais do Expo/Android para produzir um aviso muito mais forte e repetitivo que uma notificação comum. Ela não mantém um áudio infinito tocando em loop como o aplicativo Relógio nativo: o som toca por aproximadamente 18 segundos e volta a disparar conforme as repetições escolhidas. Um alarme totalmente contínuo até o usuário interromper exigiria uma implementação Android nativa específica, com serviço de áudio/alarme em primeiro plano.
+
+### Novo build obrigatório
+
+O som personalizado é incorporado ao APK no momento do build. Depois de atualizar para a V2.4, gere e instale um novo APK:
+
+```powershell
+eas build -p android --profile preview
+```
+
+Testes no navegador não representam corretamente som, vibração, canal de alarme ou permissões especiais do Android.

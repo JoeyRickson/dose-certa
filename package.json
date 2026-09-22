@@ -1,6 +1,6 @@
 {
   "name": "pilula-em-dia",
-  "version": "2.1.0",
+  "version": "2.4.0",
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -20,7 +20,8 @@
     "react-dom": "19.2.3",
     "react-native": "0.86.3",
     "react-native-svg": "15.15.4",
-    "react-native-web": "~0.21.2"
+    "react-native-web": "~0.21.2",
+    "react-native-safe-area-context": "~5.6.2"
   },
   "devDependencies": {
     "@types/react": "~19.2.2",

@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from 'react';
-import { Alert, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Linking, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAppTheme } from '../ThemeContext';
 import { AppColors, ThemeKey, appThemes, backgroundThemes } from '../theme';
-import { MedicationPlan } from '../types';
+import { MedicationPlan, ReminderMode } from '../types';
 import { formatDateBR } from '../utils/date';
 
 interface Props {
@@ -14,14 +14,37 @@ interface Props {
   onEditPlan: () => void;
   onRestoreDeleted: () => Promise<void>;
   onDeleteAll: () => Promise<void>;
+  reminderMode: ReminderMode;
+  alarmRepeatMinutes: number;
+  alarmRepeatCount: number;
+  onReminderModeChange: (mode: ReminderMode) => Promise<void>;
+  onAlarmRepeatMinutesChange: (minutes: number) => Promise<void>;
+  onAlarmRepeatCountChange: (count: number) => Promise<void>;
+  onTestAlarm: () => Promise<void>;
 }
 
-export function SettingsScreen({ themeKey, onThemeChange, plan, deletedCount, onEditPlan, onRestoreDeleted, onDeleteAll }: Props) {
+export function SettingsScreen({
+  themeKey,
+  onThemeChange,
+  plan,
+  deletedCount,
+  onEditPlan,
+  onRestoreDeleted,
+  onDeleteAll,
+  reminderMode,
+  alarmRepeatMinutes,
+  alarmRepeatCount,
+  onReminderModeChange,
+  onAlarmRepeatMinutesChange,
+  onAlarmRepeatCountChange,
+  onTestAlarm,
+}: Props) {
   const theme = useAppTheme();
   const c = theme.colors;
   const styles = useMemo(() => createStyles(c), [c]);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [testingAlarm, setTestingAlarm] = useState(false);
 
   function confirmRestore() {
     Alert.alert('Restaurar registros?', `Existem ${deletedCount} registro(s) apagado(s).`, [
@@ -44,6 +67,28 @@ export function SettingsScreen({ themeKey, onThemeChange, plan, deletedCount, on
       Alert.alert('Não foi possível apagar', 'Ocorreu um erro ao limpar os dados locais. Tente novamente.');
     } finally {
       setDeleting(false);
+    }
+  }
+
+  async function handleTestAlarm() {
+    try {
+      setTestingAlarm(true);
+      await onTestAlarm();
+    } finally {
+      setTestingAlarm(false);
+    }
+  }
+
+  async function openAlarmSettings() {
+    try {
+      if (Platform.OS === 'android') {
+        await Linking.sendIntent('android.settings.REQUEST_SCHEDULE_EXACT_ALARM');
+        return;
+      }
+      await Linking.openSettings();
+    } catch (error) {
+      console.warn('Não foi possível abrir diretamente Alarmes e lembretes.', error);
+      await Linking.openSettings();
     }
   }
 
@@ -85,6 +130,86 @@ export function SettingsScreen({ themeKey, onThemeChange, plan, deletedCount, on
           </View>
         </View>
 
+        <View style={styles.card}>
+          <Text style={styles.cardKicker}>LEMBRETE</Text>
+          <Text style={styles.cardTitle}>Como o aviso toca</Text>
+          <Text style={styles.body}>Escolha entre uma notificação normal ou um modo de alarme mais forte e repetitivo.</Text>
+
+          <View style={styles.modeRow}>
+            <Pressable
+              onPress={() => { void onReminderModeChange('notification'); }}
+              style={({ pressed }) => [styles.modeButton, reminderMode === 'notification' && styles.modeButtonActive, pressed && { opacity: 0.78 }]}
+            >
+              <Text style={styles.modeEmoji}>🔔</Text>
+              <Text style={[styles.modeTitle, reminderMode === 'notification' && styles.modeTitleActive]}>Notificação</Text>
+              <Text style={styles.modeCaption}>Aviso curto</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => { void onReminderModeChange('alarm'); }}
+              style={({ pressed }) => [styles.modeButton, reminderMode === 'alarm' && styles.modeButtonActive, pressed && { opacity: 0.78 }]}
+            >
+              <Text style={styles.modeEmoji}>⏰</Text>
+              <Text style={[styles.modeTitle, reminderMode === 'alarm' && styles.modeTitleActive]}>Modo alarme</Text>
+              <Text style={styles.modeCaption}>Som forte + vibração</Text>
+            </Pressable>
+          </View>
+
+          {reminderMode === 'alarm' ? (
+            <>
+              <View style={styles.alarmInfo}>
+                <Text style={styles.alarmInfoIcon}>⏰</Text>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.alarmInfoTitle}>Alarme reforçado</Text>
+                  <Text style={styles.alarmInfoText}>Toca um som de alarme de aproximadamente 18 segundos, vibra e volta a tocar pelo número de repetições configurado enquanto a dose não for confirmada.</Text>
+                </View>
+              </View>
+
+              <Text style={styles.choiceLabel}>Repetir a cada</Text>
+              <View style={styles.choiceRow}>
+                {[1, 2, 5, 10].map((minutes) => (
+                  <Pressable
+                    key={minutes}
+                    onPress={() => { void onAlarmRepeatMinutesChange(minutes); }}
+                    style={[styles.choiceChip, alarmRepeatMinutes === minutes && styles.choiceChipActive]}
+                  >
+                    <Text style={[styles.choiceChipText, alarmRepeatMinutes === minutes && styles.choiceChipTextActive]}>{minutes} min</Text>
+                  </Pressable>
+                ))}
+              </View>
+
+              <Text style={styles.choiceLabel}>Quantidade de toques</Text>
+              <View style={styles.choiceRow}>
+                {[3, 5, 8].map((count) => (
+                  <Pressable
+                    key={count}
+                    onPress={() => { void onAlarmRepeatCountChange(count); }}
+                    style={[styles.choiceChip, alarmRepeatCount === count && styles.choiceChipActive]}
+                  >
+                    <Text style={[styles.choiceChipText, alarmRepeatCount === count && styles.choiceChipTextActive]}>{count}x</Text>
+                  </Pressable>
+                ))}
+              </View>
+
+              <View style={styles.alarmActions}>
+                <Pressable
+                  disabled={testingAlarm}
+                  onPress={() => { void handleTestAlarm(); }}
+                  style={[styles.testAlarmButton, testingAlarm && styles.disabled]}
+                >
+                  <Text style={styles.testAlarmText}>{testingAlarm ? 'Agendando...' : 'Testar alarme em 10 s'}</Text>
+                </Pressable>
+                {Platform.OS === 'android' ? (
+                  <Pressable onPress={() => { void openAlarmSettings(); }} style={styles.systemSettingsButton}>
+                    <Text style={styles.systemSettingsText}>Permitir alarmes exatos</Text>
+                  </Pressable>
+                ) : null}
+              </View>
+
+              <Text style={styles.alarmFootnote}>No Android 12 ou superior, permita “Alarmes e lembretes” para maior precisão. O volume e o modo Não Perturbe continuam sujeitos às configurações do aparelho.</Text>
+            </>
+          ) : null}
+        </View>
+
         <LinearGradient colors={theme.heroGradient} style={styles.heroCard}>
           <View style={styles.heroTop}>
             <View style={styles.heroIcon}><Text style={styles.heroEmoji}>💊</Text></View>
@@ -108,7 +233,8 @@ export function SettingsScreen({ themeKey, onThemeChange, plan, deletedCount, on
           <Text style={styles.cardTitle}>Configuração atual</Text>
           <SettingRow icon="📅" label="Data de início" value={formatDateBR(plan.start_date)} />
           <SettingRow icon="🏁" label="Data final" value={plan.end_date ? formatDateBR(plan.end_date) : 'Sem data final'} />
-          <SettingRow icon="🔔" label="Segundo lembrete" value={plan.reminder_minutes > 0 ? `+${plan.reminder_minutes} min` : 'Desativado'} />
+          <SettingRow icon="⏰" label="Modo do aviso" value={reminderMode === 'alarm' ? 'Alarme' : 'Notificação'} />
+          <SettingRow icon="🔔" label="Segundo lembrete" value={reminderMode === 'alarm' ? 'Substituído pelo alarme' : (plan.reminder_minutes > 0 ? `+${plan.reminder_minutes} min` : 'Desativado')} />
           <SettingRow icon="🔊" label="Notificações" value={plan.notifications_enabled ? 'Ativadas' : 'Desativadas'} />
         </View>
 
@@ -129,7 +255,7 @@ export function SettingsScreen({ themeKey, onThemeChange, plan, deletedCount, on
           <Text style={styles.cardKicker}>COMO FUNCIONA</Text>
           <Text style={styles.cardTitle}>Uso do aplicativo</Text>
           <HowItWorksRow number="1" title="Configure a cartela" text="Informe data de início, quantidade de comprimidos, dias de pausa e horário diário." />
-          <HowItWorksRow number="2" title="Receba o lembrete" text="Com as notificações permitidas, o app agenda o aviso no horário definido e um segundo lembrete opcional." />
+          <HowItWorksRow number="2" title="Receba o lembrete" text="Use notificação normal ou Modo Alarme. No alarme, o app usa som forte, vibração e repetições configuráveis até você confirmar ou adiar." />
           <HowItWorksRow number="3" title="Registre a dose" text="Marque como tomada ou não tomada. O horário real, observações e correções ficam salvos no histórico." />
           <HowItWorksRow number="4" title="Acompanhe sem perder dados" text="Calendário e histórico usam o banco local do aparelho. Editar o tratamento preserva os registros anteriores." />
         </View>
@@ -138,7 +264,7 @@ export function SettingsScreen({ themeKey, onThemeChange, plan, deletedCount, on
           <Text style={styles.noticeIcon}>i</Text>
           <View style={{ flex: 1 }}>
             <Text style={styles.noticeTitle}>Observações importantes</Text>
-            <Text style={styles.noticeText}>O Pílula em Dia é um lembrete e registro de uso. Ele não calcula ovulação, período fértil nem define conduta para doses esquecidas. Em caso de atraso ou esquecimento, consulte a bula específica do medicamento e/ou orientação profissional.</Text>
+            <Text style={styles.noticeText}>O Dose Certa é um lembrete e registro de uso. Ele não calcula ovulação, período fértil nem define conduta para doses esquecidas. Em caso de atraso ou esquecimento, consulte a bula específica do medicamento e/ou orientação profissional.</Text>
           </View>
         </View>
 
@@ -148,7 +274,7 @@ export function SettingsScreen({ themeKey, onThemeChange, plan, deletedCount, on
             <Text style={styles.creditKicker}>CRÉDITOS</Text>
             <Text style={styles.creditTitle}>Idealizado e desenvolvido por</Text>
             <Text style={styles.creditName}>Joey Rickson Guimarães Oliveira</Text>
-            <Text style={styles.creditMeta}>Pílula em Dia • Projeto pessoal</Text>
+            <Text style={styles.creditMeta}>Dose Certa • Projeto pessoal</Text>
           </View>
         </View>
 
@@ -229,7 +355,7 @@ const helper = StyleSheet.create({
 
 function createStyles(c: AppColors) {
   return StyleSheet.create({
-    outer: { flexGrow: 1, backgroundColor: c.backdrop, padding: 16, paddingBottom: 110 },
+    outer: { flexGrow: 1, backgroundColor: c.backdrop, padding: 16, paddingBottom: 28 },
     shell: { width: '100%', maxWidth: 760, alignSelf: 'center', gap: 16 },
     eyebrow: { color: c.primary, fontWeight: '900', fontSize: 10, letterSpacing: 1.3 },
     title: { color: c.text, fontSize: 25, fontWeight: '900', marginTop: 3 },
@@ -238,6 +364,29 @@ function createStyles(c: AppColors) {
     cardKicker: { color: c.primary, fontSize: 9, fontWeight: '900', letterSpacing: 1.1 },
     cardTitle: { color: c.text, fontSize: 18, fontWeight: '900', marginBottom: 3 },
     body: { color: c.muted, lineHeight: 19, fontSize: 12, marginBottom: 4 },
+    modeRow: { flexDirection: 'row', gap: 10, marginTop: 5 },
+    modeButton: { flex: 1, minHeight: 104, borderRadius: 20, borderWidth: 1, borderColor: c.border, backgroundColor: c.background, padding: 12, justifyContent: 'center', alignItems: 'center' },
+    modeButtonActive: { borderColor: c.primary, backgroundColor: c.primarySoft },
+    modeEmoji: { fontSize: 23, marginBottom: 5 },
+    modeTitle: { color: c.text, fontSize: 12, fontWeight: '900', textAlign: 'center' },
+    modeTitleActive: { color: c.primaryDark },
+    modeCaption: { color: c.muted, fontSize: 9, marginTop: 3, textAlign: 'center' },
+    alarmInfo: { flexDirection: 'row', gap: 11, backgroundColor: c.surfaceSoft, borderRadius: 18, borderWidth: 1, borderColor: c.border, padding: 13, marginTop: 5 },
+    alarmInfoIcon: { fontSize: 23 },
+    alarmInfoTitle: { color: c.text, fontSize: 12, fontWeight: '900' },
+    alarmInfoText: { color: c.muted, fontSize: 10, lineHeight: 16, marginTop: 3 },
+    choiceLabel: { color: c.muted, fontSize: 10, fontWeight: '800', marginTop: 4 },
+    choiceRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+    choiceChip: { minWidth: 58, minHeight: 38, paddingHorizontal: 12, borderRadius: 14, borderWidth: 1, borderColor: c.border, backgroundColor: c.background, alignItems: 'center', justifyContent: 'center' },
+    choiceChipActive: { borderColor: c.primary, backgroundColor: c.primarySoft },
+    choiceChipText: { color: c.muted, fontSize: 10, fontWeight: '900' },
+    choiceChipTextActive: { color: c.primaryDark },
+    alarmActions: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 4 },
+    testAlarmButton: { flexGrow: 1, minWidth: 150, minHeight: 46, borderRadius: 15, backgroundColor: c.primary, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 12 },
+    testAlarmText: { color: c.white, fontSize: 11, fontWeight: '900' },
+    systemSettingsButton: { flexGrow: 1, minWidth: 150, minHeight: 46, borderRadius: 15, borderWidth: 1, borderColor: c.border, backgroundColor: c.background, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 12 },
+    systemSettingsText: { color: c.primaryDark, fontSize: 11, fontWeight: '900' },
+    alarmFootnote: { color: c.muted, fontSize: 9, lineHeight: 14, marginTop: 2 },
     themeGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 7 },
     themeOption: { width: 92, minHeight: 96, borderRadius: 18, borderWidth: 1, borderColor: c.border, backgroundColor: c.background, padding: 8, alignItems: 'center', justifyContent: 'center', gap: 7 },
     themeOptionActive: { borderColor: c.primary, backgroundColor: c.primarySoft },
